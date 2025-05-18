@@ -104,4 +104,11 @@ grafana_data/
 tempo_data/
 
 # PostgreSQL data
-postgres_data/ 
+postgres_data/
+
+# Nginx
+nginx_logs/
+*.pid
+*.log
+*.access.log
+*.error.log 
