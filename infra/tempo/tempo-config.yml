@@ -1,0 +1,25 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    jaeger:
+      protocols:
+        grpc:
+        thrift_binary:
+        thrift_compact:
+    zipkin:
+      endpoint: /api/v2/spans
+      enabled: true
+
+ingester:
+  traces_storage:
+    backend: local
+    local:
+      path: /tempo/traces
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /tempo/traces
