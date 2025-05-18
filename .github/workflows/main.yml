@@ -1,0 +1,18 @@
+name: MCP Model Server CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Docker Image
+        run: docker build -t mcp-model-server .
+      - name: Push Docker Image
+        run: docker push <your-dockerhub-username>/mcp-model-server:latest
