@@ -77,4 +77,4 @@ async def get_model_metadata(
     if not model:
         raise HTTPException(status_code=404, detail="Model not found")
     
-    return model.metadata    return model.metadata
+    return model.metadata
