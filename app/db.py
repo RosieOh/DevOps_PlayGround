@@ -5,8 +5,8 @@ from sqlalchemy import JSON, Column, DateTime, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# 데이터베이스 URL 설정
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/modeldb")
+# 데이터베이스 URL 설정 (MariaDB)
+DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://modeluser:modeldb@localhost:3306/modeldb")
 
 # SQLAlchemy 설정
 engine = create_engine(DATABASE_URL)
@@ -34,4 +34,4 @@ def get_db():
     try:
         yield db
     finally:
-        db.close()        db.close()
+        db.close()
