@@ -2,10 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# 시스템 의존성 설치
-RUN apt-get update && apt-get install -y \
+# 시스템 의존성 (MariaDB는 PyMySQL만 사용하므로 추가 패키지 불필요)
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Python 패키지 설치
@@ -17,7 +16,7 @@ COPY . .
 
 # 환경 변수 설정
 ENV PYTHONPATH=/app
-ENV DATABASE_URL=postgresql://postgres:postgres@postgres:5432/modeldb
+ENV DATABASE_URL=mysql+pymysql://modeluser:modeldb@mariadb:3306/modeldb
 
 # 포트 노출
 EXPOSE 8000
